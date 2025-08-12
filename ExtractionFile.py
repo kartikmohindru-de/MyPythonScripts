@@ -4,10 +4,11 @@
 import shutil, os
 #from subprocess import check_output
 import zipfile
-import shutil
+#import shutil
 from zipfile import ZipFile
 
 def fileExtract(filenames):
+
     #with zipfile.ZipFile(filenames, 'r') as zo:
         #zo.extractall() #default where code is running
      #   zo.extractall('ExtractionTest')
@@ -22,6 +23,12 @@ def fileExtract(filenames):
                 print(info.filename)
                 if (zipfile.is_zipfile('ExtractionTest/'+info.filename)):
                     fileExtract('ExtractionTest/'+info.filename)
-        zo.close()
+            zo.close()
 fileExtract('ExtractionTest/zippedZipped.zip')
-shutil.rmtree('TempExtracts')
+#shutil.rmtree('TempExtracts' )shutil.rmtree('TempExtracts' )
+#os.rmdir('TempExtracts')
+
+try:
+    shutil.rmtree('TempExtracts' )
+except OSError as e:
+    print("Error: %s : %s" % ('TempExtracts', e.strerror))
